@@ -1,7 +1,16 @@
 ﻿using System.IO;
 using System.Collections.Generic;
 
-var salesFiles = FindFiles("stores");
+var currentDirectory = Directory.GetCurrentDirectory();
+var storesDirectory = Path.Combine(currentDirectory, "stores");
+var salesFiles = FindFiles(storesDirectory);
+
+foreach (var file in salesFiles)
+{
+    Console.WriteLine(file);
+}
+
+//var salesFiles = FindFiles("stores");
 
 foreach (var file in salesFiles)
 {
@@ -17,8 +26,10 @@ IEnumerable<string> FindFiles(string folderName)
 
     foreach (var file in foundFiles)
     {
-        // The file name will contain the full path, so only check the end of it
-        if (file.EndsWith("sales.json"))
+        var extension = Path.GetExtension(file);
+        //if (file.EndsWith("sales.json"))
+        //var extension = Path.GetExtension(file);
+        if (extension == ".json")
         {
             salesFiles.Add(file);
         }
