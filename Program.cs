@@ -1,4 +1,6 @@
-﻿internal class Program
+# no lookie no use 
+
+internal class Program
 {
     private static void Main(string[] args)
     {
